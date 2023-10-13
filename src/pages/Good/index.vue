@@ -1,6 +1,4 @@
-<template>
-  <div>欢迎来到主页</div>
-</template>
+<template>商品详情</template>
 
 <script setup></script>
 

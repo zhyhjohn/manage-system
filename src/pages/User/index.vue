@@ -1,6 +1,4 @@
-<template>
-  <div>欢迎来到主页</div>
-</template>
+<template>用户详情</template>
 
 <script setup></script>
 
