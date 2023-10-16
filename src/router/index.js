@@ -20,9 +20,9 @@ const routes = [
     component: Home,
     redirect: '/welcome',
     children: [
-      { path: '/welcome', component: Welcome },
-      { path: '/user', component: User },
-      { path: '/good', component: Good }
+      { path: '/welcome', name: '系统主页', component: Welcome },
+      { path: '/user', name: '用户管理', component: User },
+      { path: '/good', name: '商品管理', component: Good }
     ]
   }
 ]

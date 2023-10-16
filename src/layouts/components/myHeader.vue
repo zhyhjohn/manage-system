@@ -6,7 +6,7 @@
         <span class="logo-text">后台管理系统</span>
       </div>
     </div>
-    <el-button type="info" @click="handleLogout">退出</el-button>
+    <el-button class="logout-btn" type="info" @click="handleLogout">退出</el-button>
   </div>
 </template>
 
@@ -49,6 +49,10 @@ const handleLogout = () => {
         color: white;
       }
     }
+  }
+
+  .logout-btn {
+    margin-right: 15px;
   }
 }
 </style>

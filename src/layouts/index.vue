@@ -1,22 +1,26 @@
 <template>
   <el-container class="main-container">
     <el-header>
-      <myHeader />
+      <MyHeader />
     </el-header>
     <el-container>
       <el-aside>
-        <asideNav />
+        <AsideNav />
       </el-aside>
       <el-main>
-        <router-view></router-view>
+        <BreadCrumb />
+        <el-card class="box-card">
+          <router-view></router-view>
+        </el-card>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script setup>
-import myHeader from '@/layouts/components/myHeader.vue'
-import asideNav from '@/layouts/components/asideNav.vue'
+import MyHeader from '@/layouts/components/myHeader.vue'
+import AsideNav from '@/layouts/components/asideNav.vue'
+import BreadCrumb from '@/layouts/components/breadCrumb.vue'
 </script>
 
 <style lang="scss" scoped>

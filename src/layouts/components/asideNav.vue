@@ -7,8 +7,7 @@
       default-active="welcome"
       unique-opened
       :router="true"
-      @open="handleOpen"
-      @close="handleClose"
+      @select="handleSelect"
     >
       <el-menu-item index="welcome">
         <el-icon><house /></el-icon>
@@ -43,11 +42,8 @@
 <script setup>
 import { House, Menu as IconMenu, User, Setting } from '@element-plus/icons-vue'
 
-const handleOpen = (key, keyPath) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key, keyPath) => {
-  console.log(key, keyPath)
+const handleSelect = (index, indexPath, item, routeResult) => {
+  console.log(index, indexPath, item, routeResult)
 }
 </script>
 
