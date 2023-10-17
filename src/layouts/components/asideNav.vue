@@ -4,9 +4,9 @@
       active-text-color="#409eff"
       background-color="#545c64"
       text-color="#fff"
-      default-active="welcome"
       unique-opened
       :router="true"
+      :default-active="activePath"
       @select="handleSelect"
     >
       <el-menu-item index="welcome">
@@ -31,9 +31,9 @@
           <el-menu-item index="good">商品列表</el-menu-item>
         </el-menu-item>
       </el-sub-menu>
-      <el-menu-item index="4">
+      <el-menu-item index="setting">
         <el-icon><setting /></el-icon>
-        <span>设置(别点!!!!!!!!!!!!!!!!!!!!)</span>
+        <span>设置</span>
       </el-menu-item>
     </el-menu>
   </div>
@@ -41,9 +41,14 @@
 
 <script setup>
 import { House, Menu as IconMenu, User, Setting } from '@element-plus/icons-vue'
+import { ref } from 'vue'
 
-const handleSelect = (index, indexPath, item, routeResult) => {
-  console.log(index, indexPath, item, routeResult)
+const activePath = ref('')
+
+const handleSelect = (index) => {
+  // console.log(index)
+  window.sessionStorage.setItem('activePath', index)
+  activePath.value = window.sessionStorage.getItem('activePath')
 }
 </script>
 

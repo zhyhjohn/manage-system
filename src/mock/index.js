@@ -1,30 +1,28 @@
 // 引入: mockjs 模块;
 import Mock from 'mockjs'
 
-// 内存模拟数据
-// const userList = []
-
-// for (let i = 0; i < 20; i++) {
-//   userList.push({
-//     id: Mock.mock('@increment()'),
-//     name: Mock.mock('@cname'),
-//     gender: Mock.mock('@cword("男女")'),
-//     email: Mock.mock('@email'),
-//     tel: Mock.mock(/^1[3-9]\d{9}$/),
-//     address: Mock.mock('@county(true)')
-//   })
-// }
-
 const userList = Mock.mock({
   //生成10条数据,数组形式
   'userList|20': [
     {
-      'id|+1': 1,
+      'id|+1': 100,
       name: '@cname',
       gender: '@cword("男女")',
       email: '@email',
       tel: /^1[3-9]\d{9}$/,
       address: '@county(true)'
+    }
+  ]
+})
+
+const goodList = Mock.mock({
+  //生成10条数据,数组形式
+  'goodList|20': [
+    {
+      'id|+1': 200,
+      name: '@ctitle(3, 5)',
+      category: '@cword(2)',
+      number: '@integer(10, 200)'
     }
   ]
 })
@@ -35,6 +33,13 @@ export default [
     method: 'get',
     response: () => {
       return userList
+    }
+  },
+  {
+    url: '/api/goods',
+    method: 'get',
+    response: () => {
+      return goodList
     }
   }
 ]
