@@ -19,7 +19,7 @@
           <span>用户管理</span>
         </template>
         <el-menu-item>
-          <el-menu-item index="user">用户列表</el-menu-item>
+          <el-menu-item index="userlist">用户列表</el-menu-item>
         </el-menu-item>
       </el-sub-menu>
       <el-sub-menu index="good">
@@ -28,7 +28,19 @@
           <span>商品管理</span>
         </template>
         <el-menu-item>
-          <el-menu-item index="good">商品列表</el-menu-item>
+          <el-menu-item index="goodlist">商品列表</el-menu-item>
+        </el-menu-item>
+      </el-sub-menu>
+      <el-sub-menu index="chart">
+        <template #title>
+          <el-icon><Histogram /></el-icon>
+          <span>图表</span>
+        </template>
+        <el-menu-item>
+          <el-menu-item index="barchart">柱状图</el-menu-item>
+        </el-menu-item>
+        <el-menu-item>
+          <el-menu-item index="linechart">折线图</el-menu-item>
         </el-menu-item>
       </el-sub-menu>
       <el-menu-item index="setting">
@@ -40,7 +52,7 @@
 </template>
 
 <script setup>
-import { House, Menu as IconMenu, User, Setting } from '@element-plus/icons-vue'
+import { House, Menu as IconMenu, User, Setting, Histogram } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 
 const activePath = ref('')

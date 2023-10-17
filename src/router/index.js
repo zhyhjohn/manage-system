@@ -5,6 +5,8 @@ import Home from '@/layouts/index.vue'
 import Welcome from '@/pages/Welcome/index.vue'
 import User from '@/pages/User/index.vue'
 import Good from '@/pages/Good/index.vue'
+import BarChart from '@/pages/Chart/barChart.vue'
+import LineChart from '@/pages/Chart/lineChart.vue'
 
 const routes = [
   {
@@ -21,8 +23,10 @@ const routes = [
     redirect: '/welcome',
     children: [
       { path: '/welcome', name: '系统主页', component: Welcome },
-      { path: '/user', name: '用户管理', component: User },
-      { path: '/good', name: '商品管理', component: Good }
+      { path: '/userlist', name: '用户列表', component: User },
+      { path: '/goodlist', name: '商品列表', component: Good },
+      { path: '/barchart', name: '柱状图', component: BarChart },
+      { path: '/linechart', name: '折线图', component: LineChart }
     ]
   }
 ]
