@@ -33,6 +33,7 @@ import BreadCrumb from '@/layouts/components/breadCrumb.vue';
   }
 
   .el-aside {
+    width: 250px;
     background-color: #313743;
   }
 

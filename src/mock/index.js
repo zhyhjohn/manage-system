@@ -2,7 +2,6 @@
 import Mock from 'mockjs'
 
 const userList = Mock.mock({
-  //生成10条数据,数组形式
   'userList|20': [
     {
       'id|+1': 100,
@@ -16,7 +15,6 @@ const userList = Mock.mock({
 })
 
 const goodList = Mock.mock({
-  //生成10条数据,数组形式
   'goodList|20': [
     {
       'id|+1': 200,
@@ -24,6 +22,52 @@ const goodList = Mock.mock({
       category: '@cword(2)',
       number: '@integer(10, 200)',
       price: '@integer(50, 500)'
+    }
+  ]
+})
+
+const menuList = Mock.mock({
+  'menuList': [
+    {
+      'id': 300,
+      authName: '用户管理',
+      path: '/user',
+      children: [
+        {
+          'id': 301,
+          authName: '用户列表',
+          path: '/userlist',
+        }
+      ]
+    },
+    {
+      'id': 310,
+      authName: '商品管理',
+      path: '/good',
+      children: [
+        {
+          'id': 311,
+          authName: '商品列表',
+          path: '/goodlist',
+        }
+      ]
+    },
+    {
+      'id': 320,
+      authName: '统计管理',
+      path: '/chart',
+      children: [
+        {
+          'id': 321,
+          authName: '柱状图',
+          path: '/barchart',
+        },
+        {
+          'id': 322,
+          authName: '折线图',
+          path: '/linechart',
+        }
+      ]
     }
   ]
 })
@@ -41,6 +85,13 @@ export default [
     method: 'get',
     response: () => {
       return goodList
+    }
+  },
+  {
+    url: '/api/menus',
+    method: 'get',
+    response: () => {
+      return menuList
     }
   }
 ]
