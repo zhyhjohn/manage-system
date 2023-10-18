@@ -4,9 +4,7 @@
       <MyHeader />
     </el-header>
     <el-container>
-      <el-aside>
-        <AsideNav />
-      </el-aside>
+      <AsideNav />
       <el-main>
         <BreadCrumb />
         <el-card class="box-card">
@@ -30,11 +28,6 @@ import BreadCrumb from '@/layouts/components/breadCrumb.vue';
   .el-header {
     padding: 0;
     height: 80px;
-  }
-
-  .el-aside {
-    width: 250px;
-    background-color: #313743;
   }
 
   .el-main {

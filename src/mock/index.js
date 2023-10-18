@@ -1,4 +1,3 @@
-// 引入: mockjs 模块;
 import Mock from 'mockjs'
 
 const userList = Mock.mock({
