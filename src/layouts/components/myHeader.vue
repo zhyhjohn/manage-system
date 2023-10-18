@@ -6,19 +6,19 @@
         <span class="logo-text">后台管理系统</span>
       </div>
     </div>
-    <el-button class="logout-btn" type="info" @click="handleLogout">退出</el-button>
+    <el-button class="logout-btn" @click="handleLogout">退出</el-button>
   </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
+const router = useRouter();
 
 const handleLogout = () => {
-  window.sessionStorage.clear()
-  router.push('/login')
-}
+  window.sessionStorage.clear();
+  router.push('/login');
+};
 </script>
 
 <style lang="scss" scoped>

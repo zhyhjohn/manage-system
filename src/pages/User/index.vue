@@ -19,48 +19,48 @@
 </template>
 
 <script setup>
-import { getUserList } from '@/api/index.js'
-import { ref, reactive, onMounted, watch } from 'vue'
+import { getUserList } from '@/api/index.js';
+import { ref, reactive, onMounted, watch } from 'vue';
 
-const userListData = ref([])
-const tableData = ref()
-const total = ref(0)
+const userListData = ref([]);
+const tableData = ref();
+const total = ref(0);
 // 用于真实后端请求分页参数
 const queryInfo = reactive({
   query: '',
   pageNum: 1,
-  pageSize: 5
-})
+  pageSize: 5,
+});
 
 const fetchData = async () => {
   try {
-    const data = await getUserList()
-    userListData.value = data
+    const data = await getUserList();
+    userListData.value = data;
   } catch (err) {
-    console.log('err: ', err)
+    console.log('err: ', err);
   }
-}
+};
 
 const handleSizeChange = (newSize) => {
-  queryInfo.pageSize = newSize
-  fetchData()
-  console.log('newSize: ', newSize)
-}
+  queryInfo.pageSize = newSize;
+  fetchData();
+  console.log('newSize: ', newSize);
+};
 
 const handleCurrentChange = (newPage) => {
-  queryInfo.pageNum = newPage
-  fetchData()
-  console.log('newPage: ', newPage)
-}
+  queryInfo.pageNum = newPage;
+  fetchData();
+  console.log('newPage: ', newPage);
+};
 
 onMounted(() => {
-  fetchData()
-})
+  fetchData();
+});
 
 watch(userListData, (newVal) => {
-  tableData.value = newVal
-  total.value = newVal.length
-})
+  tableData.value = newVal;
+  total.value = newVal.length;
+});
 </script>
 
 <style lang="scss" scoped>

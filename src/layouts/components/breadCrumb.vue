@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ArrowRight } from '@element-plus/icons-vue'
+import { ArrowRight } from '@element-plus/icons-vue';
 </script>
 
 <style lang="scss" scoped>

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const Api = {
   userList: '/api/users',
-  goodList: '/api/goods'
+  goodList: '/api/goods',
 }
 
 export const getUserList = async () => {

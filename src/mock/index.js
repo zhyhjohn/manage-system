@@ -22,7 +22,8 @@ const goodList = Mock.mock({
       'id|+1': 200,
       name: '@ctitle(3, 5)',
       category: '@cword(2)',
-      number: '@integer(10, 200)'
+      number: '@integer(10, 200)',
+      price: '@integer(50, 500)'
     }
   ]
 })

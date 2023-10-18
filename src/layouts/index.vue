@@ -18,18 +18,20 @@
 </template>
 
 <script setup>
-import MyHeader from '@/layouts/components/myHeader.vue'
-import AsideNav from '@/layouts/components/asideNav.vue'
-import BreadCrumb from '@/layouts/components/breadCrumb.vue'
+import MyHeader from '@/layouts/components/myHeader.vue';
+import AsideNav from '@/layouts/components/asideNav.vue';
+import BreadCrumb from '@/layouts/components/breadCrumb.vue';
 </script>
 
 <style lang="scss" scoped>
 .main-container {
   height: 100%;
+
   .el-header {
     padding: 0;
     height: 80px;
   }
+
   .el-aside {
     background-color: #313743;
   }

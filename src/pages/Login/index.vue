@@ -34,40 +34,44 @@
 </template>
 
 <script setup>
-import { ElMessage } from 'element-plus'
-import { User, Lock } from '@element-plus/icons-vue'
-import { reactive } from 'vue'
-import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus';
+import { User, Lock } from '@element-plus/icons-vue';
+import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
+const router = useRouter();
 
 const loginForm = reactive({
   username: '',
   password: '',
-  token: 'abc123'
-})
+  token: 'abc123',
+});
+
+var a = 123;
+console.log(a);
 
 const handleLogin = () => {
-  if (loginForm.username == 'admin' && loginForm.password == '123456') {
-    console.log(loginForm)
-    ElMessage.success('登陆成功!跳转至主页!')
-    window.sessionStorage.setItem('token', loginForm.token)
-    router.push('/home')
+  if (loginForm.username == 'admin' && loginForm.password === '123456') {
+    console.log(loginForm);
+    ElMessage.success('登陆成功!跳转至主页!');
+    window.sessionStorage.setItem('token', loginForm.token);
+    router.push('/home');
   } else {
-    ElMessage.error('用户名或密码错误!')
+    ElMessage.error('用户名或密码错误!');
   }
-}
+};
 
 const handleReset = () => {
-  loginForm.username = ''
-  loginForm.password = ''
-}
+  loginForm.username = '';
+  loginForm.password = '';
+};
 </script>
 
 <style lang="scss" scoped>
 .login-container {
-  background-color: #2b4b6b;
+  background-color: #409eff;
   height: 100%;
+
   .login-box {
     width: 400px;
     height: 300px;
@@ -77,12 +81,14 @@ const handleReset = () => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
     .box-header {
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .box-body {
       .login-form {
         width: 100%;

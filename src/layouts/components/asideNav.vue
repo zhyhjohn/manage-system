@@ -34,7 +34,7 @@
       <el-sub-menu index="chart">
         <template #title>
           <el-icon><Histogram /></el-icon>
-          <span>图表</span>
+          <span>统计管理</span>
         </template>
         <el-menu-item>
           <el-menu-item index="barchart">柱状图</el-menu-item>
