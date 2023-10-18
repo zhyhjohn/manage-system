@@ -5,12 +5,7 @@
       <div class="box-body">
         <el-form class="login-form" :model="loginForm">
           <el-form-item>
-            <el-input
-              v-model="loginForm.username"
-              placeholder="请输入用户名"
-              type="text"
-              :prefix-icon="User"
-            />
+            <el-input v-model="loginForm.username" placeholder="请输入用户名" type="text" :prefix-icon="User" />
           </el-form-item>
           <el-form-item>
             <el-input
@@ -47,11 +42,8 @@ const loginForm = reactive({
   token: 'abc123',
 });
 
-var a = 123;
-console.log(a);
-
 const handleLogin = () => {
-  if (loginForm.username == 'admin' && loginForm.password === '123456') {
+  if (loginForm.username === 'admin' && loginForm.password === '123456') {
     console.log(loginForm);
     ElMessage.success('登陆成功!跳转至主页!');
     window.sessionStorage.setItem('token', loginForm.token);
