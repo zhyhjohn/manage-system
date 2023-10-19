@@ -9,17 +9,13 @@ import * as echarts from 'echarts';
 const main = ref(); // 使用ref创建虚拟DOM引用,使用时用main.value
 
 const init = () => {
-  // 基于准备好的dom,初始化echarts实例
   const myChart = echarts.init(main.value);
-  // 指定图表的配置项和数据
   const option = {
     title: {
       text: '基础柱状图',
     },
     tooltip: {},
-    legend: {
-      data: ['销量'],
-    },
+    legend: {},
     xAxis: {
       type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],

@@ -7,6 +7,7 @@ import User from '@/pages/User/index.vue'
 import Good from '@/pages/Good/index.vue'
 import BarChart from '@/pages/Chart/barChart.vue'
 import LineChart from '@/pages/Chart/lineChart.vue'
+import PieChart from '@/pages/Chart/pieChart.vue'
 
 const routes = [
   {
@@ -26,7 +27,8 @@ const routes = [
       { path: '/userlist', name: '用户列表', component: User },
       { path: '/goodlist', name: '商品列表', component: Good },
       { path: '/barchart', name: '柱状图', component: BarChart },
-      { path: '/linechart', name: '折线图', component: LineChart }
+      { path: '/linechart', name: '折线图', component: LineChart },
+      { path: '/piechart', name: '折线图', component: PieChart },
     ]
   }
 ]

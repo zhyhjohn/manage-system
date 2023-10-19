@@ -65,6 +65,11 @@ const menuList = Mock.mock({
           'id': 322,
           authName: '折线图',
           path: '/linechart',
+        },
+        {
+          'id': 323,
+          authName: '饼图',
+          path: '/piechart',
         }
       ]
     }
