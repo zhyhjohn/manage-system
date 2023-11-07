@@ -1,7 +1,10 @@
 <template>
   <div class="aside-container">
     <el-aside :width="isCollapse ? '64px' : '250px'">
-      <div class="collapse-btn" @click="handleCollapse">|||</div>
+      <div class="collapse-btn" @click="handleCollapse">
+        <Fold v-if="isCollapse === false" class="fold-icon" />
+        <Expand v-if="isCollapse === true" class="fold-icon" />
+      </div>
       <el-menu
         active-text-color="#409eff"
         background-color="#545c64"
@@ -37,7 +40,7 @@
 </template>
 
 <script setup>
-import { Avatar, HomeFilled, Histogram } from '@element-plus/icons-vue';
+import { Avatar, HomeFilled, Histogram, Expand, Fold } from '@element-plus/icons-vue';
 import { onMounted, ref } from 'vue';
 import { getMenuList } from '@/api/index.js';
 
@@ -84,6 +87,13 @@ onMounted(() => {
     text-align: center;
     letter-spacing: 5px;
     cursor: pointer;
+
+    .fold-icon {
+      margin-top: 6px;
+      width: 22px;
+      height: 22px;
+      color: white;
+    }
   }
 }
 .el-menu {

@@ -3,11 +3,11 @@
     <div class="login-box">
       <div class="box-header">登录</div>
       <div class="box-body">
-        <el-form class="login-form" :model="loginForm">
-          <el-form-item>
+        <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="70">
+          <el-form-item label="用户名:" prop="username">
             <el-input v-model="loginForm.username" placeholder="请输入用户名" type="text" :prefix-icon="User" />
           </el-form-item>
-          <el-form-item>
+          <el-form-item label="密码:" prop="password">
             <el-input
               v-model="loginForm.password"
               placeholder="请输入密码"
@@ -16,12 +16,10 @@
               show-password
             />
           </el-form-item>
-          <el-row justify="center">
-            <el-form-item class="action-btn">
-              <el-button type="primary" @click="handleLogin">登录</el-button>
-              <el-button type="info" @click="handleReset">重置</el-button>
-            </el-form-item>
-          </el-row>
+          <el-form-item class="action-btn">
+            <el-button type="primary" @click="handleLogin">登录</el-button>
+            <el-button type="info" @click="handleReset">重置</el-button>
+          </el-form-item>
         </el-form>
       </div>
     </div>
@@ -31,10 +29,12 @@
 <script setup>
 import { ElMessage } from 'element-plus';
 import { User, Lock } from '@element-plus/icons-vue';
-import { reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+
+const loginFormRef = ref(null);
 
 const loginForm = reactive({
   username: '',
@@ -42,15 +42,28 @@ const loginForm = reactive({
   token: 'abc123',
 });
 
+const loginFormRules = ref({
+  username: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
+  password: [{ required: true, message: '密码不能为空', trigger: 'blur' }],
+});
+
 const handleLogin = () => {
-  if (loginForm.username === 'admin' && loginForm.password === '123456') {
-    console.log(loginForm);
-    ElMessage.success('登陆成功!跳转至主页!');
-    window.sessionStorage.setItem('token', loginForm.token);
-    router.push('/home');
-  } else {
-    ElMessage.error('用户名或密码错误!');
-  }
+  if (!loginFormRef.value) return;
+  loginFormRef.value.validate((valid) => {
+    if (valid) {
+      if (loginForm.username === 'admin' && loginForm.password === '123456') {
+        console.log(loginForm);
+        ElMessage.success('登陆成功!跳转至主页!');
+        window.sessionStorage.setItem('token', loginForm.token);
+        router.push('/home');
+      } else {
+        ElMessage.error('用户名或密码错误!');
+      }
+    } else {
+      ElMessage({ message: '登录失败', type: 'error' });
+      return false;
+    }
+  });
 };
 
 const handleReset = () => {
@@ -79,6 +92,8 @@ const handleReset = () => {
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
     }
 
     .box-body {
@@ -91,6 +106,10 @@ const handleReset = () => {
       }
     }
   }
+}
+
+.action-btn {
+  margin-left: 30px;
 }
 
 .el-form-item__content {
