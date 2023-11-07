@@ -1,4 +1,9 @@
 <template>
+  <div class="header-container">
+    <el-input v-model="searchUserInfo" placeholder="Please input" />
+    <el-button type="primary" style="margin-left: 12px" :icon="Search">查询</el-button>
+    <el-button :icon="Plus" @click="handleClickAdd">新增</el-button>
+  </div>
   <el-table :data="tableData" border style="width: 100%">
     <el-table-column prop="name" label="姓名" width="100" />
     <el-table-column prop="gender" label="性别" width="100" />
@@ -23,6 +28,28 @@
     @current-change="handleCurrentChange"
   ></el-pagination>
 
+  <el-dialog v-model="addUserDialogVisible" title="新增用户" width="30%">
+    <el-form :model="addForm" class="edit-container" label-width="50px">
+      <el-form-item label="姓名:" props="name">
+        <el-input v-model="addForm.name" />
+      </el-form-item>
+      <el-form-item label="性别:" props="gender">
+        <el-input v-model="addForm.gender" />
+      </el-form-item>
+      <el-form-item label="邮箱:" props="email">
+        <el-input v-model="addForm.email" />
+      </el-form-item>
+      <el-form-item label="手机:" props="tel">
+        <el-input v-model="addForm.tel" />
+      </el-form-item>
+      <el-form-item label="地址:" props="address">
+        <el-input v-model="addForm.address" />
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitAddUser">确定</el-button>
+      </el-form-item>
+    </el-form>
+  </el-dialog>
   <el-dialog v-model="userInfoDialogVisible" title="用户信息" width="30%">
     <div class="user-info-dialog-text">
       <span> 姓名:{{ userInfoDialog.name }} </span>
@@ -48,6 +75,7 @@
           @click="
             deleteDialogVisible = false;
             tableData.splice(deleteIndex, 1);
+            ElMessage({ message: '删除成功', type: 'success' });
           "
         >
           确认
@@ -73,7 +101,7 @@
         <el-input v-model="editForm.address" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">确定</el-button>
+        <el-button type="primary" @click="submitEditForm">确定</el-button>
       </el-form-item>
     </el-form>
   </el-dialog>
@@ -82,12 +110,16 @@
 <script setup>
 import { getUserList } from '@/api/index.js';
 import { ref, reactive, onMounted } from 'vue';
+import { Search, Plus } from '@element-plus/icons-vue';
+import { ElMessage } from 'element-plus';
 
 const tableData = ref([]);
 const total = ref(0);
 const deleteIndex = ref();
 const editIndex = ref();
 const editUserForm = ref(null);
+const searchUserInfo = ref();
+const addUserDialogVisible = ref(false);
 const userInfoDialogVisible = ref(false);
 const deleteDialogVisible = ref(false);
 const EditDialogVisible = ref(false);
@@ -100,6 +132,14 @@ const queryInfo = reactive({
 });
 
 const userInfoDialog = reactive({
+  name: '',
+  gender: '',
+  email: '',
+  tel: '',
+  address: '',
+});
+
+const addForm = reactive({
   name: '',
   gender: '',
   email: '',
@@ -124,6 +164,17 @@ const fetchData = async () => {
   }
 };
 
+const handleClickAdd = () => {
+  addUserDialogVisible.value = true;
+};
+
+const submitAddUser = () => {
+  addForm['id'] = tableData.value.length;
+  tableData.value.push(addForm);
+  addUserDialogVisible.value = false;
+  ElMessage({ message: '新增用户成功', type: 'success' });
+};
+
 const handleClickView = (row) => {
   // console.log('row: ', row);
   userInfoDialog.name = row.name;
@@ -135,6 +186,7 @@ const handleClickView = (row) => {
 };
 
 const handleClickEdit = (index, row) => {
+  console.log('index: ', index);
   editIndex.value = index;
   editForm.name = row.name;
   editForm.gender = row.gender;
@@ -144,7 +196,7 @@ const handleClickEdit = (index, row) => {
   EditDialogVisible.value = true;
 };
 
-const submitForm = () => {
+const submitEditForm = () => {
   tableData.value[editIndex.value].name = editForm.name;
   tableData.value[editIndex.value].gender = editForm.gender;
   tableData.value[editIndex.value].email = editForm.email;
@@ -180,6 +232,15 @@ onMounted(() => {
 <style lang="scss" scoped>
 .el-table {
   margin-bottom: 15px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 12px;
+  .el-input {
+    width: 30%;
+  }
 }
 .user-info-dialog-text {
   display: flex;
