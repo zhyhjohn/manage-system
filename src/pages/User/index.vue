@@ -205,11 +205,12 @@ const resetAddUserForm = () => {
 };
 
 const handleClickView = (index, row) => {
-  userInfoDialog.name = row.name;
-  userInfoDialog.gender = row.gender;
-  userInfoDialog.email = row.email;
-  userInfoDialog.tel = row.tel;
-  userInfoDialog.address = row.address;
+  // userInfoDialog.name = row.name;
+  // userInfoDialog.gender = row.gender;
+  // userInfoDialog.email = row.email;
+  // userInfoDialog.tel = row.tel;
+  // userInfoDialog.address = row.address;
+  Object.assign(userInfoDialog, row);
   userInfoDialogVisible.value = true;
 };
 

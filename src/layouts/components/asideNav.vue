@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { Avatar, HomeFilled, Histogram, Expand, Fold } from '@element-plus/icons-vue';
+import { Avatar, HomeFilled, Histogram, WarningFilled, Expand, Fold } from '@element-plus/icons-vue';
 import { onMounted, ref } from 'vue';
 import { getMenuList } from '@/api/index.js';
 
@@ -51,6 +51,7 @@ const iconsObj = {
   300: Avatar,
   310: HomeFilled,
   320: Histogram,
+  330: WarningFilled,
 };
 
 const fetchData = async () => {

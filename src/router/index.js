@@ -8,6 +8,8 @@ import Good from '@/pages/Good/index.vue'
 import BarChart from '@/pages/Chart/barChart.vue'
 import LineChart from '@/pages/Chart/lineChart.vue'
 import PieChart from '@/pages/Chart/pieChart.vue'
+import Role from '@/pages/Right/role.vue'
+import RoleRight from '@/pages/Right/roleRight.vue'
 
 const routes = [
   {
@@ -29,6 +31,8 @@ const routes = [
       { path: '/barchart', name: '柱状图', component: BarChart },
       { path: '/linechart', name: '折线图', component: LineChart },
       { path: '/piechart', name: '折线图', component: PieChart },
+      { path: '/role', name: '角色管理', component: Role },
+      { path: '/roleright', name: '权限管理', component: RoleRight },
     ]
   }
 ]
