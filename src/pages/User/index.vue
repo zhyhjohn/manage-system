@@ -8,7 +8,7 @@
     <el-table-column label="操作" fixed="right">
       <template #default="action">
         <el-button size="small" @click="handleClickView(action.row)">查看</el-button>
-        <el-button type="primary" size="small" @click="handleClickEdit(action.row)" disabled>编辑</el-button>
+        <el-button type="primary" size="small" @click="handleClickEdit(action.$index, action.row)">编辑</el-button>
         <el-button type="danger" size="small" @click="handleClickDelete(action.$index, action.row)">删除</el-button>
       </template>
     </el-table-column>
@@ -39,7 +39,7 @@
     </template>
   </el-dialog>
   <el-dialog v-model="deleteDialogVisible" title="删除确认" width="30%">
-    <span>你是否确定要删除[{{ userInfoDialog.name }}]的信息</span>
+    <span>你是否确定要删除姓名为:[{{ userInfoDialog.name }}]的信息</span>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="deleteDialogVisible = false">取消</el-button>
@@ -56,20 +56,20 @@
     </template>
   </el-dialog>
   <el-dialog v-model="EditDialogVisible" title="编辑" width="40%">
-    <el-form ref="userForm" :model="editForm" class="edit-container" label-width="50px">
-      <el-form-item label="姓名:">
+    <el-form ref="editUserForm" :model="editForm" class="edit-container" label-width="50px">
+      <el-form-item label="姓名:" props="name">
         <el-input v-model="editForm.name" />
       </el-form-item>
-      <el-form-item label="性别:">
+      <el-form-item label="性别:" props="gender">
         <el-input v-model="editForm.gender" />
       </el-form-item>
-      <el-form-item label="邮箱:">
+      <el-form-item label="邮箱:" props="email">
         <el-input v-model="editForm.email" />
       </el-form-item>
-      <el-form-item label="手机:">
+      <el-form-item label="手机:" props="tel">
         <el-input v-model="editForm.tel" />
       </el-form-item>
-      <el-form-item label="地址:">
+      <el-form-item label="地址:" props="address">
         <el-input v-model="editForm.address" />
       </el-form-item>
       <el-form-item>
@@ -86,7 +86,8 @@ import { ref, reactive, onMounted } from 'vue';
 const tableData = ref([]);
 const total = ref(0);
 const deleteIndex = ref();
-const userForm = ref('');
+const editIndex = ref();
+const editUserForm = ref(null);
 const userInfoDialogVisible = ref(false);
 const deleteDialogVisible = ref(false);
 const EditDialogVisible = ref(false);
@@ -133,21 +134,26 @@ const handleClickView = (row) => {
   userInfoDialogVisible.value = true;
 };
 
-const handleClickEdit = (row) => {
+const handleClickEdit = (index, row) => {
+  editIndex.value = index;
   editForm.name = row.name;
   editForm.gender = row.gender;
   editForm.email = row.email;
   editForm.tel = row.tel;
   editForm.address = row.address;
   EditDialogVisible.value = true;
-  console.log(row);
 };
 
-const submitForm = () => {};
+const submitForm = () => {
+  tableData.value[editIndex.value].name = editForm.name;
+  tableData.value[editIndex.value].gender = editForm.gender;
+  tableData.value[editIndex.value].email = editForm.email;
+  tableData.value[editIndex.value].tel = editForm.tel;
+  tableData.value[editIndex.value].address = editForm.address;
+  EditDialogVisible.value = false;
+};
 
 const handleClickDelete = (index, row) => {
-  // console.log('index: ', index);
-  // console.log('row: ', row);
   userInfoDialog.name = row.name;
   deleteDialogVisible.value = true;
   deleteIndex.value = index;
