@@ -5,6 +5,14 @@
     <el-table-column prop="category" label="分类" width="150" />
     <el-table-column prop="number" label="余量" width="150" />
     <el-table-column prop="price" label="价格" width="150" />
+    <el-table-column prop="state" label="状态" width="100">
+      <template #default="tag">
+        <el-tag v-if="tag.row.state === '未售出'">{{ tag.row.state }}</el-tag>
+        <el-tag v-if="tag.row.state === '正在售出'" type="success">{{ tag.row.state }}</el-tag>
+        <el-tag v-if="tag.row.state === '需要补货'" type="warning">{{ tag.row.state }}</el-tag>
+        <el-tag v-if="tag.row.state === '已售空'" type="danger">{{ tag.row.state }}</el-tag>
+      </template>
+    </el-table-column>
     <el-table-column prop="action" label="操作" />
   </el-table>
   <el-pagination
@@ -35,6 +43,7 @@ const queryInfo = reactive({
 const fetchData = async () => {
   try {
     const data = await getGoodList();
+    console.log('data: ', data);
     goodListData.value = data;
   } catch (err) {
     console.log('err: ', err);

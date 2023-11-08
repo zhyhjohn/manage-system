@@ -10,7 +10,7 @@
     <el-table-column prop="email" label="邮箱" width="250" />
     <el-table-column prop="tel" label="手机" width="150" />
     <el-table-column prop="address" label="地址" width="300" />
-    <el-table-column label="操作" fixed="right">
+    <el-table-column prop="action" label="操作" fixed="right">
       <template #default="action">
         <el-button size="small" @click="handleClickView(action.$index, action.row)">查看</el-button>
         <el-button type="primary" size="small" @click="handleClickEdit(action.$index, action.row)">编辑</el-button>
@@ -35,8 +35,8 @@
       </el-form-item>
       <el-form-item label="性别:" prop="gender">
         <el-radio-group v-model="addForm.gender">
-          <el-radio border label="男" />
-          <el-radio border label="女" />
+          <el-radio label="男" />
+          <el-radio label="女" />
         </el-radio-group>
       </el-form-item>
       <el-form-item label="邮箱:" prop="email">
