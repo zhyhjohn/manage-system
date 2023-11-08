@@ -70,7 +70,7 @@
     </template>
   </el-dialog>
   <el-dialog v-model="deleteDialogVisible" title="删除确认" width="30%">
-    <span>你是否确定要删除姓名为:[{{ userInfoDialog.name }}]的信息</span>
+    <span>你是否确定要删除姓名为:[{{ userInfoDialog.name }}]的信息?</span>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="deleteDialogVisible = false">取消</el-button>
@@ -215,7 +215,6 @@ const handleClickView = (index, row) => {
 };
 
 const handleClickEdit = (index, row) => {
-  console.log('index: ', index);
   editIndex.value = index;
   editForm.name = row.name;
   editForm.gender = row.gender;

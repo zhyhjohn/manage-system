@@ -1,6 +1,7 @@
 import { userList } from './modules/user'
 import { goodList } from './modules/good'
 import { menuList } from './modules/menu'
+import { rightList } from './modules/right'
 
 export default [
   {
@@ -22,6 +23,13 @@ export default [
     method: 'get',
     response: () => {
       return menuList
+    }
+  },
+  {
+    url: '/api/rights',
+    method: 'get',
+    response: () => {
+      return rightList
     }
   }
 ]
