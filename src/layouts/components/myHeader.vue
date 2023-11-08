@@ -67,17 +67,18 @@ const handleLogout = () => {
 <style lang="scss" scoped>
 .header-container {
   height: 100%;
-  background-color: #313743;
+  background-color: #242f42;
   display: flex;
   align-items: center;
   justify-content: space-between;
   .logo-container {
     display: flex;
     flex-direction: row;
+    width: 250px;
+    justify-content: center;
     .logo-pic {
-      width: 30px;
+      width: 40px;
       height: 30px;
-      padding: 10px;
     }
     .logo-text-container {
       display: flex;
@@ -87,7 +88,7 @@ const handleLogout = () => {
         margin-left: 15px;
       }
       .logo-text {
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 800;
         color: white;
       }
@@ -110,6 +111,8 @@ const handleLogout = () => {
   .logout-btn {
     margin-left: 15px;
     margin-right: 15px;
+    font-size: 16px;
+    font-weight: 600;
   }
 }
 </style>

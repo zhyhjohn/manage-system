@@ -9,7 +9,14 @@
         <el-button type="primary" size="small" :icon="Edit" @click="handleClickEdit(action.$index, action.row)">
           修改
         </el-button>
-        <el-button type="danger" size="small" @click="handleClickDelete(action.$index, action.row)"> 删除 </el-button>
+        <el-button
+          type="danger"
+          size="small"
+          :icon="DeleteFilled"
+          @click="handleClickDelete(action.$index, action.row)"
+        >
+          删除
+        </el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -56,7 +63,7 @@
 
 <script setup>
 import { getRightList } from '@/api/index.js';
-import { Edit } from '@element-plus/icons-vue';
+import { Edit, DeleteFilled } from '@element-plus/icons-vue';
 import { ref, reactive, onMounted } from 'vue';
 import { ElMessage } from 'element-plus';
 

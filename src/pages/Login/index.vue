@@ -81,15 +81,15 @@ const handleReset = () => {
     width: 400px;
     height: 300px;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     .box-header {
-      height: 50px;
       display: flex;
+      margin-top: 20px;
       align-items: center;
       justify-content: center;
       font-size: 20px;
@@ -101,18 +101,14 @@ const handleReset = () => {
         width: 100%;
         position: absolute;
         padding: 0 20px;
+        bottom: 60px;
         box-sizing: border-box;
-        bottom: 80px;
       }
     }
   }
 }
 
 .action-btn {
-  margin-left: 30px;
-}
-
-.el-form-item__content {
-  display: block;
+  margin-left: 50px;
 }
 </style>

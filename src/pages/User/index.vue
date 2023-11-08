@@ -13,8 +13,17 @@
     <el-table-column prop="action" label="操作" fixed="right">
       <template #default="action">
         <el-button size="small" @click="handleClickView(action.$index, action.row)">查看</el-button>
-        <el-button type="primary" size="small" @click="handleClickEdit(action.$index, action.row)">编辑</el-button>
-        <el-button type="danger" size="small" @click="handleClickDelete(action.$index, action.row)">删除</el-button>
+        <el-button type="primary" size="small" :icon="Edit" @click="handleClickEdit(action.$index, action.row)">
+          编辑
+        </el-button>
+        <el-button
+          type="danger"
+          size="small"
+          :icon="DeleteFilled"
+          @click="handleClickDelete(action.$index, action.row)"
+        >
+          删除
+        </el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -117,7 +126,7 @@
 <script setup>
 import { getUserList } from '@/api/index.js';
 import { ref, reactive, onMounted } from 'vue';
-import { Search, Plus } from '@element-plus/icons-vue';
+import { Search, Plus, Edit, DeleteFilled } from '@element-plus/icons-vue';
 import { ElMessage } from 'element-plus';
 
 const tableData = ref([]);

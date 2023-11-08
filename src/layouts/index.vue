@@ -1,13 +1,13 @@
 <template>
   <el-container class="main-container">
-    <el-header>
+    <el-header class="page-header">
       <MyHeader />
     </el-header>
     <el-container>
       <AsideNav />
-      <el-main>
+      <el-main class="page-main">
         <BreadCrumb />
-        <el-card class="box-card">
+        <el-card>
           <router-view></router-view>
         </el-card>
       </el-main>
@@ -25,12 +25,12 @@ import BreadCrumb from '@/layouts/components/breadCrumb.vue';
 .main-container {
   height: 100%;
 
-  .el-header {
+  .page-header {
     padding: 0;
     height: 80px;
   }
 
-  .el-main {
+  .page-main {
     background-color: #e9edf1;
   }
 }
