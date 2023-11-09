@@ -58,8 +58,8 @@
         <el-input v-model="addForm.address" />
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitAddUser(addUserForm)">确定</el-button>
-        <el-button @click="resetAddUserForm(addUserForm)">重置</el-button>
+        <el-button type="primary" @click="submitAddUser()">确定</el-button>
+        <el-button @click="resetAddUserForm()">重置</el-button>
       </el-form-item>
     </el-form>
   </el-dialog>
@@ -297,14 +297,6 @@ onMounted(() => {
   }
 }
 
-.edit-container {
-  .el-form-item asterisk-left {
-    .el-form-item__label {
-      display: block !important;
-      width: 60px !important;
-    }
-  }
-}
 .dialog-footer button:first-child {
   margin-right: 10px;
 }

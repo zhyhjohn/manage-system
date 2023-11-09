@@ -30,8 +30,8 @@ watchEffect(() => {
   try {
     firstAuthName.value = NavRef.value.firstAuthName;
     secondAuthName.value = NavRef.value.secondAuthName;
-    console.log('firstAuthName: ', firstAuthName.value);
-    console.log('secondAuthName: ', secondAuthName.value);
+    // console.log('firstAuthName: ', firstAuthName.value);
+    // console.log('secondAuthName: ', secondAuthName.value);
   } catch (error) {
     console.log('error: ', error);
   }

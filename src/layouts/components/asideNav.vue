@@ -65,6 +65,7 @@ const content = computed(() => {
 
 const fetchData = async () => {
   const resultList = await getMenuList();
+  console.log('resultList: ', resultList);
   menuList.value = resultList;
 };
 

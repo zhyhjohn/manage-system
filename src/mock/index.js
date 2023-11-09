@@ -2,6 +2,7 @@ import { userList } from './modules/user'
 import { goodList } from './modules/good'
 import { menuList } from './modules/menu'
 import { rightList } from './modules/right'
+import { purchaseList } from './modules/order'
 
 export default [
   {
@@ -30,6 +31,13 @@ export default [
     method: 'get',
     response: () => {
       return rightList
+    }
+  },
+  {
+    url: '/api/orders/purchase',
+    method: 'get',
+    response: () => {
+      return purchaseList
     }
   }
 ]

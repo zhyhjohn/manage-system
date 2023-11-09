@@ -8,9 +8,8 @@
 
 <script setup>
 import { ArrowRight } from '@element-plus/icons-vue';
-import { watchEffect } from 'vue';
 
-const props = defineProps({
+defineProps({
   firstAuthName: {
     type: String,
     default: '',
@@ -24,11 +23,6 @@ const props = defineProps({
 const handleClickBackToHome = () => {
   window.sessionStorage.setItem('activePath', '');
 };
-
-watchEffect(() => {
-  console.log('props.firstAuthName: ', props.firstAuthName);
-  console.log('props.secondAuthName: ', props.secondAuthName);
-});
 </script>
 
 <style lang="scss" scoped>

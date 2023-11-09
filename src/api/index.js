@@ -4,7 +4,8 @@ const Api = {
   menuList: '/api/menus',
   userList: '/api/users',
   goodList: '/api/goods',
-  rightList: '/api/rights'
+  rightList: '/api/rights',
+  purchaseList: '/api/orders/purchase'
 }
 
 export const getMenuList = async () => {
@@ -25,4 +26,9 @@ export const getGoodList = async () => {
 export const getRightList = async () => {
   const { data } = await axios.get(Api.rightList)
   return data.rightList
+}
+
+export const getPurchaseList = async () => {
+  const { data } = await axios.get(Api.purchaseList)
+  return data.purchaseList
 }
