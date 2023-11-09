@@ -1,28 +1,33 @@
 <template>
   <el-breadcrumb :separator-icon="ArrowRight">
-    <el-breadcrumb-item :to="{ path: '/home' }">系统主页</el-breadcrumb-item>
+    <el-breadcrumb-item :to="{ path: '/home' }" @click="handleClickBackToHome">系统主页</el-breadcrumb-item>
     <el-breadcrumb-item v-if="firstAuthName">{{ firstAuthName }}</el-breadcrumb-item>
-    <el-breadcrumb-item v-if="SecondAuthName">{{ SecondAuthName }}</el-breadcrumb-item>
-    <el-breadcrumb-item v-if="ThirdAuthName">{{ ThirdAuthName }}</el-breadcrumb-item>
+    <el-breadcrumb-item v-if="secondAuthName">{{ secondAuthName }}</el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
 <script setup>
 import { ArrowRight } from '@element-plus/icons-vue';
+import { watchEffect } from 'vue';
 
 const props = defineProps({
   firstAuthName: {
     type: String,
-    default: '1',
+    default: '',
   },
-  SecondAuthName: {
+  secondAuthName: {
     type: String,
-    default: '2',
+    default: '',
   },
-  ThirdAuthName: {
-    type: String,
-    default: '3',
-  },
+});
+
+const handleClickBackToHome = () => {
+  window.sessionStorage.setItem('activePath', '');
+};
+
+watchEffect(() => {
+  console.log('props.firstAuthName: ', props.firstAuthName);
+  console.log('props.secondAuthName: ', props.secondAuthName);
 });
 </script>
 

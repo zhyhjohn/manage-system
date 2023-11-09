@@ -10,6 +10,9 @@ import LineChart from '@/pages/Chart/lineChart.vue'
 import PieChart from '@/pages/Chart/pieChart.vue'
 import Role from '@/pages/Right/role.vue'
 import RoleRight from '@/pages/Right/roleRight.vue'
+import Purchase from '@/pages/Order/purchase.vue'
+import Import from '@/pages/Order/import.vue'
+import Outbound from '@/pages/Order/outbound.vue'
 
 const routes = [
   {
@@ -33,6 +36,9 @@ const routes = [
       { path: '/piechart', name: '折线图', component: PieChart },
       { path: '/role', name: '角色管理', component: Role },
       { path: '/roleright', name: '权限管理', component: RoleRight },
+      { path: '/purchase', name: '采购管理', component: Purchase },
+      { path: '/import', name: '入库管理', component: Import },
+      { path: '/outbound', name: '出库管理', component: Outbound },
     ]
   }
 ]

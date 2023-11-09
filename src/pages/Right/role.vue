@@ -95,7 +95,6 @@ const editFormRules = ref({
 const fetchData = async () => {
   try {
     const data = await getRightList();
-    console.log('data: ', data);
     tableData.value = data;
   } catch (err) {
     console.log('err: ', err);

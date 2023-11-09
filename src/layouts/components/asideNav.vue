@@ -1,7 +1,7 @@
 <template>
   <div class="aside-container">
     <el-aside :width="isCollapse ? '64px' : '250px'">
-      <el-tooltip effect="light" :content="content" placement="top">
+      <el-tooltip effect="light" :content="content" show-after="200" placement="top">
         <div class="collapse-btn" @click="handleCollapse">
           <Fold v-if="isCollapse === false" class="fold-icon" />
           <Expand v-if="isCollapse === true" class="fold-icon" />
@@ -29,7 +29,7 @@
             :key="subItem.id"
             :index="subItem.path"
             :name="subItem.authName"
-            @click="saveNavPath(subItem.path)"
+            @click="savePathInfo(subItem.path, item.authName, subItem.authName)"
           >
             <template #title>
               <span>{{ subItem.authName }}</span>
@@ -42,22 +42,25 @@
 </template>
 
 <script setup>
-import { Avatar, HomeFilled, Histogram, WarningFilled, Expand, Fold } from '@element-plus/icons-vue';
+import { Avatar, Goods, Histogram, WarningFilled, List, Expand, Fold } from '@element-plus/icons-vue';
 import { onMounted, ref, computed } from 'vue';
 import { getMenuList } from '@/api/index.js';
 
 const menuList = ref([]);
 const defaultActivePath = ref('');
 const isCollapse = ref(false);
+const firstAuthName = ref('');
+const secondAuthName = ref('');
 const iconsObj = {
-  300: Avatar,
-  310: HomeFilled,
-  320: Histogram,
-  330: WarningFilled,
+  310: Avatar,
+  320: Goods,
+  330: Histogram,
+  340: WarningFilled,
+  350: List,
 };
 
 const content = computed(() => {
-  return isCollapse.value ? '点击收起侧边栏' : '点击展开侧边栏';
+  return isCollapse.value ? '点击展开侧边栏' : '点击收起侧边栏';
 });
 
 const fetchData = async () => {
@@ -65,12 +68,21 @@ const fetchData = async () => {
   menuList.value = resultList;
 };
 
-const saveNavPath = (activePath) => {
+const savePathInfo = (activePath, firstName, secondName) => {
   window.sessionStorage.setItem('activePath', activePath);
+  // window.sessionStorage.setItem('firstAuthName', firstName);
+  // window.sessionStorage.setItem('secondAuthName', secondName);
+  firstAuthName.value = firstName;
+  secondAuthName.value = secondName;
 };
 
-const defaultValueChange = () => {
-  defaultActivePath.value = window.sessionStorage.getItem('activePath');
+const defaultMenuValueChange = () => {
+  const result = window.sessionStorage.getItem('activePath');
+  if (!result) {
+    defaultActivePath.value = '/welcome';
+  } else {
+    defaultActivePath.value = window.sessionStorage.getItem('activePath');
+  }
 };
 
 const handleCollapse = () => {
@@ -79,7 +91,12 @@ const handleCollapse = () => {
 
 onMounted(() => {
   fetchData();
-  defaultValueChange();
+  defaultMenuValueChange();
+});
+
+defineExpose({
+  firstAuthName,
+  secondAuthName,
 });
 </script>
 

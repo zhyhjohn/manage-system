@@ -43,7 +43,6 @@ const queryInfo = reactive({
 const fetchData = async () => {
   try {
     const data = await getGoodList();
-    console.log('data: ', data);
     goodListData.value = data;
   } catch (err) {
     console.log('err: ', err);

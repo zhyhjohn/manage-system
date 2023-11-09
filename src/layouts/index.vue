@@ -4,9 +4,9 @@
       <MyHeader />
     </el-header>
     <el-container>
-      <AsideNav />
+      <AsideNav ref="NavRef" />
       <el-main class="page-main">
-        <BreadCrumb />
+        <BreadCrumb :firstAuthName="firstAuthName" :secondAuthName="secondAuthName" />
         <el-card>
           <router-view></router-view>
         </el-card>
@@ -19,6 +19,23 @@
 import MyHeader from '@/layouts/components/myHeader.vue';
 import AsideNav from '@/layouts/components/asideNav.vue';
 import BreadCrumb from '@/layouts/components/breadCrumb.vue';
+
+import { ref, watchEffect } from 'vue';
+
+const NavRef = ref(null);
+const firstAuthName = ref('');
+const secondAuthName = ref('');
+
+watchEffect(() => {
+  try {
+    firstAuthName.value = NavRef.value.firstAuthName;
+    secondAuthName.value = NavRef.value.secondAuthName;
+    console.log('firstAuthName: ', firstAuthName.value);
+    console.log('secondAuthName: ', secondAuthName.value);
+  } catch (error) {
+    console.log('error: ', error);
+  }
+});
 </script>
 
 <style lang="scss" scoped>

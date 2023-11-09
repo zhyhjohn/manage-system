@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="action">
-      <el-tooltip effect="light" :content="content" placement="bottom">
+      <el-tooltip effect="light" :content="content" show-after="200" placement="bottom">
         <Rank v-if="isFullScreen === false" class="full-screen-btn" @click="handleClickFullScreen" />
         <FullScreen v-if="isFullScreen === true" class="full-screen-btn" @click="handleClickFullScreen" />
       </el-tooltip>

@@ -1,7 +1,7 @@
 import Mock from 'mockjs'
 
 export const rightList = Mock.mock({
-    'rightList|8': [
+    'rightList|10': [
         {
             'id|+1': 10000,
             username: '@string(10)',
