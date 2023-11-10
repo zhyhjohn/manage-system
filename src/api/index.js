@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const Api = {
+  loginInfo: '/api/login',
   menuList: '/api/menus',
   userList: '/api/users',
   goodList: '/api/goods',
@@ -8,6 +9,11 @@ const Api = {
   purchaseList: '/api/orders/purchase',
   importList: '/api/orders/import',
   outboundList: '/api/orders/outbound'
+}
+
+export const getLoginInfo = async (username, password) => {
+  const { data } = await axios.post(Api.loginInfo)
+  if (username === data.loginInfo.username && password === data.loginInfo.password) return data.loginInfo
 }
 
 export const getMenuList = async () => {

@@ -31,6 +31,7 @@ import { ElMessage } from 'element-plus';
 import { User, Lock } from '@element-plus/icons-vue';
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { getLoginInfo } from '@/api/index.js';
 
 const router = useRouter();
 
@@ -49,18 +50,28 @@ const loginFormRules = ref({
 
 const handleLogin = () => {
   if (!loginFormRef.value) return;
-  loginFormRef.value.validate((valid) => {
+  loginFormRef.value.validate(async (valid) => {
+    const { username, password } = loginForm;
     if (valid) {
-      if (loginForm.username === 'admin' && loginForm.password === '123456') {
-        console.log(loginForm);
+      // if (loginForm.username === 'admin' && loginForm.password === '123456') {
+      //   ElMessage.success('登陆成功!跳转至主页!');
+      //   window.sessionStorage.setItem('token', loginForm.token);
+      //   router.push('/home');
+      // } else {
+      //   ElMessage.error('用户名或密码错误!');
+      // }
+      const result = await getLoginInfo(username, password);
+      if (result) {
         ElMessage.success('登陆成功!跳转至主页!');
-        window.sessionStorage.setItem('token', loginForm.token);
+        window.sessionStorage.setItem('token', result.token);
         router.push('/home');
       } else {
         ElMessage.error('用户名或密码错误!');
       }
     } else {
-      ElMessage({ message: '登录失败', type: 'error' });
+      if (!username && password) ElMessage({ message: '请输入用户名!', type: 'error' });
+      if (!password && username) ElMessage({ message: '请输入密码!', type: 'error' });
+      if (!username && !password) ElMessage({ message: '请输入用户名和密码!', type: 'error' });
       return false;
     }
   });

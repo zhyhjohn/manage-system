@@ -1,3 +1,4 @@
+import { loginInfo } from './modules/login'
 import { userList } from './modules/user'
 import { goodList } from './modules/good'
 import { menuList } from './modules/menu'
@@ -5,6 +6,13 @@ import { rightList } from './modules/right'
 import { purchaseList, importList, outboundList } from './modules/order'
 
 export default [
+  {
+    url: '/api/login',
+    method: 'post',
+    response: () => {
+      return loginInfo
+    }
+  },
   {
     url: '/api/users',
     method: 'get',
