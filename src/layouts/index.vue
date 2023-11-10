@@ -5,12 +5,14 @@
     </el-header>
     <el-container>
       <AsideNav ref="NavRef" />
-      <el-main class="page-main">
-        <BreadCrumb :firstAuthName="firstAuthName" :secondAuthName="secondAuthName" />
-        <el-card>
-          <router-view></router-view>
-        </el-card>
-      </el-main>
+      <el-container>
+        <el-main class="page-main">
+          <BreadCrumb :firstAuthName="firstAuthName" :secondAuthName="secondAuthName" />
+          <el-card>
+            <router-view></router-view>
+          </el-card>
+        </el-main>
+      </el-container>
     </el-container>
   </el-container>
 </template>
@@ -30,8 +32,6 @@ watchEffect(() => {
   try {
     firstAuthName.value = NavRef.value.firstAuthName;
     secondAuthName.value = NavRef.value.secondAuthName;
-    // console.log('firstAuthName: ', firstAuthName.value);
-    // console.log('secondAuthName: ', secondAuthName.value);
   } catch (error) {
     console.log('error: ', error);
   }

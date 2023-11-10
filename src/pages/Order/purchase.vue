@@ -6,9 +6,9 @@
     <el-button type="primary" style="margin-left: 12px" :icon="Search">查询</el-button>
     <el-button :icon="Plus" @click="handleClickAdd">新增采购单</el-button>
   </div>
-  <el-table :data="tableData" border style="width: 100%">
-    <el-table-column prop="time" label="申请日期" width="200" />
+  <el-table :data="tableData" border height="680px" style="width: 100%">
     <el-table-column prop="id" label="采购单号" width="200" />
+    <el-table-column prop="time" label="申请采购日期" width="200" />
     <el-table-column prop="purchaser" label="申请人" width="100" />
     <el-table-column prop="good" label="采购商品" width="100" />
     <el-table-column prop="remark" label="备注" width="400" />

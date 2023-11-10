@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="tableData" border style="width: 100%">
+  <el-table :data="tableData" border height="680px" style="width: 100%">
     <el-table-column prop="id" label="账号ID" width="100" />
     <el-table-column prop="username" label="账号" width="300" />
     <el-table-column prop="password" label="密码" width="300" />

@@ -2,7 +2,7 @@ import { userList } from './modules/user'
 import { goodList } from './modules/good'
 import { menuList } from './modules/menu'
 import { rightList } from './modules/right'
-import { purchaseList } from './modules/order'
+import { purchaseList, importList, outboundList } from './modules/order'
 
 export default [
   {
@@ -39,5 +39,19 @@ export default [
     response: () => {
       return purchaseList
     }
-  }
+  },
+  {
+    url: '/api/orders/import',
+    method: 'get',
+    response: () => {
+      return importList
+    }
+  },
+  {
+    url: '/api/orders/outbound',
+    method: 'get',
+    response: () => {
+      return outboundList
+    }
+  },
 ]

@@ -4,7 +4,7 @@
     <el-button type="primary" style="margin-left: 12px" :icon="Search">查询</el-button>
     <el-button :icon="Plus" @click="handleClickAdd">新增</el-button>
   </div>
-  <el-table :data="tableData" border style="width: 100%">
+  <el-table :data="tableData" border height="680px" style="width: 100%">
     <el-table-column prop="name" label="姓名" width="100" />
     <el-table-column prop="gender" label="性别" width="100" />
     <el-table-column prop="email" label="邮箱" width="250" />

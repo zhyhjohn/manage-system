@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="tableData" border style="width: 100%">
+  <el-table :data="tableData" border height="680px" style="width: 100%">
     <el-table-column prop="id" label="产品编号" width="150" />
     <el-table-column prop="name" label="商品名称" width="150" />
     <el-table-column prop="category" label="分类" width="150" />
